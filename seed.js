@@ -13,7 +13,7 @@ async function seed() {
   await db.collection('tasks').deleteMany({});
   await db.collection('notes').deleteMany({});
 
-  // ── USERS ──
+  //  USERS 
   const passwordHash = await bcrypt.hash('password123', 10);
 
   const usersResult = await db.collection('users').insertMany([
@@ -36,7 +36,7 @@ async function seed() {
   const aliceId = usersResult.insertedIds[0];
   const bobId   = usersResult.insertedIds[1];
 
-  // ── PROJECTS ──
+  //  PROJECTS 
   const projectsResult = await db.collection('projects').insertMany([
     {
       _id: new ObjectId(),
@@ -76,7 +76,7 @@ async function seed() {
   const proj2 = projectsResult.insertedIds[1];
   const proj3 = projectsResult.insertedIds[2];
 
-  // ── TASKS ──
+  //  TASKS 
   await db.collection('tasks').insertMany([
     {
       _id: new ObjectId(),
@@ -148,7 +148,7 @@ async function seed() {
     }
   ]);
 
-  // ── NOTES ──
+  //  NOTES 
   await db.collection('notes').insertMany([
     {
       _id: new ObjectId(),
@@ -198,7 +198,7 @@ async function seed() {
     }
   ]);
 
-  console.log('✅ Seed complete!');
+  console.log(' Seed complete!');
   process.exit(0);
 }
 
